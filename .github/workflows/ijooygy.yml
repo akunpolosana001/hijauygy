@@ -1,10 +1,10 @@
-name: Auto ijoin lekk
+name: Auto ijo boss
 
 on:
   push:
 
 jobs:
-  ijoin-commit-rek:
+  infinite-commits:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,16 +16,18 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install NPM dependencies
+      - name: Install dependencies
         run: npm install moment chalk simple-git random jsonfile
 
-      - name: Run nodejs script
-        run: node aseli.js
-
-      - name: Push result
+      - name: Set Git identity
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git push
+
+      - name: Run commit script
+        run: node aseli.js
+
+      - name: Push commit
+        run: git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
