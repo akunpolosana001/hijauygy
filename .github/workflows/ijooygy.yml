@@ -1,4 +1,4 @@
-name: Auto ijo boss
+name: Infinite Commits
 
 on:
   push:
@@ -24,10 +24,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Run commit script
-        run: node aseli.js
+      - name: Set up authenticated remote
+        run: git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Push commit
-        run: git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run commit loop
+        run: node aseli.js
