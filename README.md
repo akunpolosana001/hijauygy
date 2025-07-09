@@ -1,2 +1,2 @@
 # auto-ijo
-buat yg ytta aj😂
+buat yg ytta aj😂🗿
