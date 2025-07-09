@@ -20,7 +20,7 @@ jobs:
         run: npm install moment chalk simple-git random jsonfile
 
       - name: Run nodejs script
-        run: node commit-loop.js
+        run: node aseli.js
 
       - name: Push result
         run: |
